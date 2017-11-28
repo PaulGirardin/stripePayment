@@ -1,5 +1,6 @@
 const keyPublishable = process.env.PUBLISHABLE_KEY;
 const keySecret = process.env.SECRET_KEY;
+const port = process.enc.PORT || 8080;
 
 const app = require("express")();
 const stripe = require("stripe")(keySecret);
@@ -27,4 +28,6 @@ app.post("/charge", (req, res) => {
   .then(charge => res.render("charge.pug"));
 });
 
-app.listen(8080);
+app.listen(port, function () {
+  console.log('Port: ' + port)
+});
