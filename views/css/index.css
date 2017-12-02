@@ -1,0 +1,7 @@
+.article-list {
+	display: flex;
+}
+
+.article-list .article {
+	display: flex;
+}
