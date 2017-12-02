@@ -1,7 +1,6 @@
 const keyPublishable = process.env.PUBLISHABLE_KEY;
 const keySecret = process.env.SECRET_KEY;
 const port = process.env.PORT || 8080;
-console.log(keyPublishable);
 
 const app = require("express")();
 const stripe = require("stripe")(keySecret);
@@ -39,7 +38,7 @@ app.get("/", (req, res) => {
 
 app.post("/charge", (req, res) => {
   let amount = req.body.payment;
-  page = require(pagePath + 'charge');
+  page = 'charge';
 
   stripe.customers.create({
     email: req.body.stripeEmail,
