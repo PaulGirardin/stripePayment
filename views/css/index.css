@@ -3,5 +3,40 @@
 }
 
 .article-list .article {
-	display: flex;
+	width: 200px;
+	margin: 0 20px;
+	background-color: aquamarine;
+}
+
+.article-list .article .head {
+	height: 200px;
+	width: 200px;
+	margin: 0;
+	border: 1px solid #C0C0C0;
+	border-bottom: none;
+}
+
+.article-list .article .head .show {
+	border-radius: 100px;
+	height: 200px;
+	width: 200px;
+	text-align: center;
+	vertical-align: middle;
+
+	background-color: white;
+}
+
+.article-list .article .head .show h2 {
+	height: 200px;
+ 	line-height: 200px;
+ 	margin: 0;
+}
+
+.article-list .article .body {
+	height: 240px;
+	width: 200px;
+	padding: 20px;
+	background-color: white;
+	border: 1px solid #C0C0C0;
+	border-top: none;
 }

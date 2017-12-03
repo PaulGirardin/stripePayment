@@ -14,16 +14,19 @@ let articles = [
   {
     show: 'ARTICLE1',
     title: 'Article1',
+    description: 'Precise description',
     price: 1000
   },
   {
     show: 'ARTICLE2',
     title: 'Article2',
+    description: 'Precise description',
     price: 2000
   },
   {
     show: 'ARTICLE3',
     title: 'Article3',
+    description: 'Precise description',
     price: 3000
   }
 ];
@@ -32,6 +35,7 @@ app.set("view engine", "pug");
 app.use(require("body-parser").urlencoded({extended: false}));
 
 app.get("/", (req, res) => {
+  page = 'index';
   res.render(pagePath + page, {
     keyPublishable: keyPublishable,
     articles: articles
@@ -41,6 +45,7 @@ app.get("/", (req, res) => {
 app.post("/charge", (req, res) => {
   let amount = req.body.value;
   page = 'charge';
+  console.log(amount);
 
   stripe.customers.create({
     email: req.body.stripeEmail,

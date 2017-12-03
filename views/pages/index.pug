@@ -15,6 +15,7 @@ block content
                         h2 #{article.show}
                 div(class="body")
                     h2 #{article.title} (#{article.price / 100}$)
+                    p #{article.description}
                     button(class="btn btn-primary add-article" data-prix=article.price ) Add
     div(class='cart')
         span(id="cart-amount") 0
@@ -24,8 +25,7 @@ block content
                 label(class="card-element") Credit
                 div(id='card-element')
                 div(id='card-errors' role='alert')
-            label 
-            input(type='hidden' value=1000 name="value" id="current-paiement")
+            input(type='hidden' value=1000 name="value" id="current-payment")
             button Submit payment
 
     script.
@@ -58,14 +58,14 @@ block content
             event.preventDefault();
 
             stripe.createToken(card).then(function(result) {
-            if (result.error) {
-                // Inform the customer that there was an error
-                var errorElement = document.getElementById('card-errors');
-                errorElement.textContent = result.error.message;
-            } else {
-                // Send the token to your server
-                stripeTokenHandler(result.token);
-            }
+                if (result.error) {
+                    // Inform the customer that there was an error
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = result.error.message;
+                } else {
+                    // Send the token to your server
+                    stripeTokenHandler(result.token);
+                }
             });
         });
 
@@ -87,5 +87,6 @@ block content
                 var amount = parseInt($('#cart-amount').html());
                 amount += parseInt($(this).data('prix')) / 100;
                 $('#cart-amount').html(amount);
+                $('#current-payment').val(amount * 100);
             });
         });
